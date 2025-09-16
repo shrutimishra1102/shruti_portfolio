@@ -809,11 +809,3 @@ h2.skill-title {
     align-items: center;
     margin-top: 1.5%;
 } 
-
-
-
-@media (max-width:1024px) and (min-width:770px) {
-   #background{
-    flex-direction: column;
-   }
-}
