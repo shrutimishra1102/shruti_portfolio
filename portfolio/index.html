@@ -2,812 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
-<style>
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-    html{
-        scroll-behavior: smooth;
-    }
-
-#background {
-    position: relative;
-    margin-top: 0%;
-    width: 100%;
-    height: 100vh;
-    background-color:#000000; 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; 
-    align-items: flex-start;
-    padding-bottom: 2%;
-    gap: 30px;
-}
-.buttons {
-    width: 20%; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 83%;
-    gap: 3em; 
-    margin-top: 5.5%;
-    margin-bottom: 2%;
-    margin-right: 6%;
-    position: fixed; 
-    z-index: 1000;
-  
-}
-.buttons a{
-    color: white;
-}
-.buttons button {
-    padding: 10px 12px;
-    background-color: transparent;
-    color: rgb(66, 53, 53);
-    border: 2px solid white;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-}
-.buttons button i {
-    font-size: 17px;
-}
-.buttons button:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 15px#FF7A00;
-    background-color: rgba(255, 136, 0, 0.1);
-}
-#canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0; 
-    opacity: 0.3;
-}
-#info {
-    width: 70%;
-    margin-top: 10%;
-    margin-left: 1%;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-#container {
-    position: relative;
-    z-index: 1; 
-    margin-top: 8.5%;
-    margin-left: 3%;
-    width: 70%;
-    /* background-color: #3e06a7; */
-}
-h1{
-    
-     font-size:2.8rem;
-    font-weight: bold;
-    color: white;
-    margin-left: 2%; 
-    /* background-color: #e06a00; */
-    font-family: 'Poppins', system-ui, sans-serif;
-}
-#name {
-    font-size: 2.8rem;
-    /* color: orange; */
-    animation: colourchng 2s infinite ease;
-}
-@keyframes colourchng {
-    0% { color: #ffffff; }
-    50% { color: #ff8800; }
-    100% { color: #ffffff; }
-    }
-#highlite {
-    margin-left: 2%;
-    font-family:'Poppins', system-ui, sans-serif;
-    font-size: 1.7rem;
-    font-weight: 300;
-    color: #f5f5f5;
-    margin-top: -3%;
-    letter-spacing: 1px;  
-    /* background-color: #ff8c42; */
-}
-#description{
-    margin-left: 2%;
-    font-size: 1rem;
-    margin-top: 1%;
-     font-family:'Poppins', system-ui, sans-serif;
-}
-#button {
-    margin-left:2%;
-    margin-top: 4%;
-    display: flex;
-    gap: 20px;
-}
-#button button {
-    padding: 10px 20px; 
-    border: 2px solid rgb(255, 123, 0);
-    background-color: transparent;
-    color: #f5f5f5;
-    font-size: 1.2rem;
-    font-weight: 500;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-#button button:hover {
-    background-color:  #FF8800;
-    color: #000;
-    transform: scale(1.05);
-   }
-#circl {
-    width: 10px;
-    height: 10px;
-    background-color: white;
-    border-radius: 50%;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    position: fixed;
-    z-index: 1000;
-}
-/* about page */
-#about{
-    width: 100%;
-    height: 100vh;
-    background-color: #000000;
-    display: flex;
-    flex-direction: row;
-    margin-top: 0.2%;
-    position: relative;
-    z-index: 1;
-}
-.about-heading {
-    display: flex;
-    flex-direction: column;
-    margin-top:5.7%;
-    align-items: center;
-    width: 6%;
-    color: white;
-    font-size:1.6rem;
-    font-weight: bold;
-    line-height: 2.3;
-    z-index: 2;
-}
-.about-heading p {
-    margin: 0;
-    padding: 2px;
-}
-.about-div{
-    width: 80%;
-    height: 80vh;
-    border: 1px solid #ff8800;
-    display: flex;
-    flex-direction: row;
-    margin-top: 5%;
-    margin-left: 2%;
-}
-.about-photo {
-    margin-top: 3.5%;
-    margin-left: 3%;
-     width: 55%;      /* बराबर चौड़ाई */
-    height: 85%;
-    border-radius: 50%;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: visible; 
-}
-
-/* rotating border */
-/* .about-photo::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    width: calc(90% + 10px );
-    height: calc(90% + 10px);
-    border-radius: 50%;
-    background: radial-gradient(#ffc400, #ff9900, #ff8800, #ff7300);
-    animation: spin 3s linear infinite;
-    filter: blur(3px);
-    z-index: 0;
-} */
-
-/* blurred outer glow */
-.about-photo::after {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    width: calc(100% + 40px);
-    height: calc(100% + 40px);
-    border-radius: 50%;
-    background: radial-gradient(circle, rgb(255, 136, 0) 20%, transparent);
-    filter: blur(25px);
-    z-index: -1;
-}
-/* photo itself */
-.about-photo img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    position: relative;
-    z-index: 2; 
-    filter: sepia(40%) saturate(190%) hue-rotate(-10deg);
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-#intro{
-  width: 52%;
-    height: 67vh;
-    background-color: #000000;
-    margin-top: 3.5%;
-    margin-left: 2%;
-    font-size: 25px;
-    padding: 20px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    border: 2px solid transparent;
-    background-clip: padding-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fdfdfd;
-    position: relative;
-    overflow: hidden;
-    align-items: center;
-    text-align: center;
-    display: none;
-}
-#intro::before{
-     content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background-color: #c7bdbd44;
-    
-}
-#intro h1{
-    font-size: 32px;
-    color:rgb(255, 255, 255);
-    margin-bottom: 15px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-#intro p{
-        font-size: 18px;
-    color: #fffefe;
-    line-height: 1.6;
-    font-weight:400;
-    font-family: 'Dancing Script', cursive;
-    text-transform: capitalize;
-
-}
-.about-sticky{
-    margin-top: 2%;
-    margin-left: 5%;
-    width: 80%;
-    height: 65vh;
-    z-index: 2;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-content: flex-start; 
-    padding: 10px;
-}
-.sticky-note {
-    position: relative;
-    width: 16.3rem;
-    height: 13rem;
-    background-color: #ffc;
-    padding: 13px;
-    box-shadow: 5px 5px 10px rgba(255, 174, 0, 0.212);
-    transform: rotate(2deg); 
-    font-family: 'Segoe Script', cursive;
-    font-size: 0.8rem;
-    line-height: 1.7;
-    transition: all 0.2s ease;
-}
-.sticky-note:hover {
-    transform: scale(1.05) rotate(-6deg);
-    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
-    z-index: 10;
-    transform: scale(1.1) rotate(-6deg) translateY(-5px);
-    box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
-}
-.sticky-note:nth-child(even) {
-    transform: rotate(5deg);
-    background-color: #fcc;
-}
-.sticky-note:nth-child(even):hover {
-    transform: scale(1.05) rotate(10deg); 
-    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
-    z-index: 10;
-}
-.sticky-note:nth-child(3) {
-    transform: rotate(7deg);
-    background-color: #ccf;
-}
-.sticky-note:nth-child(3):hover {
-    transform: scale(1.05) rotate(-9deg);
-    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
-    z-index: 10;
-}
-.sticky-note:nth-child(4) {
-    transform: rotate(-3deg);
-    background-color: #cfc;
-}
-.sticky-note:nth-child(4):hover {
-    transform: scale(1.05) rotate(3deg); 
-    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
-    z-index: 10;
-}
-.sticky-note::before {
-    content: ''; 
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 15px;
-    height: 15px;
-    background-color:#ff0000;
-    border-radius: 50%;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
-.sticky-note:nth-child(even)::before {
-    background-color: #3e06a7;
-}
-.sticky-note:nth-child(3)::before {
-    background-color: #4b012a;
-}
-.sticky-note:nth-child(4)::before {
-    background-color: #ff8800;
-}
-.sticky-note h3 {
-    font-size: 1.2rem;
-    border-bottom: 2px solid #ff8800;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-}
-/* education */
-#education {
-    background-color: #000000;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    margin-top: 0.3%;
-}
-.education-heading{
-      display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 7%;  
-    color: white;
-    font-size: 1.7rem;
-    font-weight: bold;
-    line-height: 2;
-    margin-top: 6%;
-    z-index: 2;
-}
-.education-heading h2{
-    color: rgb(255, 255, 255);
-    font-size: 30px;
-}
-.education-wrapper{
-    margin-left: 1%;
-    margin-top: 6%;
-    width: 80%;
-    height: 80vh;
-    display: flex;
-    flex-direction: row;
-    border: 1px solid rgb(255, 123, 0);
-}
-.education-college {
-    width: 50%;
-    height: 72vh; 
-    margin-top: 2.5%;
-    display: flex;
-    flex-direction: column;
-    margin-left: 1%;
-}
-.education-masters,
-.education-bechlores,
-.education-art,
-.education-graphics {
-    width: 90%;
-    border-radius: 20px;
-    border-left: 4px solid #fc8a078f;
-    background-color: #050000;
-    padding: 20px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-}
-.education-masters:hover,
-.education-bechlores:hover,
-.education-art:hover,
-.education-graphics:hover {
-transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.377);
-}
-.education-masters{
-    height:45%;
-    margin-left: 1%;
-}
-.education-bechlores{
-    height:45%;
-    margin-left: 4%;
-    margin-top: 7%;
-}
-.education-extra {
-    width: 50%;
-    height: 72vh; 
-    margin-top: 2.5%;
-    margin-right: 2%;
-    display: flex;
-    flex-direction: row;
-}
-.education-art{
-    height:92%;
-    margin-left: 1%;
-}
-.education-graphics{
-    height:92%;
-    margin-left: 4%;
-    margin-top: 4%;
-}
-.card-heading {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #fffcfc;
-}
-.skill-btn {
-    display: inline-block;
-    background-color: #ff7b00;
-    color: white;
-    padding: 9px 9px;
-    border-radius: 15px;
-    margin:3px;
-    margin-top: 1.5%;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: none;
-}
-.skill-btn:hover {
-    background-color: #ca650c;
-    transform: scale(1.08);
-}
-/* skills */
-#skill {
-    margin-top: 0.3%;
-    background-color: black;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    transition: all 0.3s ease-in-out;
-}
-.skill-heading {
-    display: flex;
-    flex-direction: column;
-    margin-top: 8.6%;
-    align-items: center;
-    width: 7%;
-    color: white;
-    font-size: 1.7rem;
-    font-weight: bold;
-    line-height: 2.5;
-    z-index: 2;
-    position: relative;
-}
-.skill-container {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    height: 80vh;
-   
-    margin-top: 5%;
-    border: 1px solid rgb(255, 123, 0);
-    padding: 20px;
-   }
-h2.skill-title {
-    color: white;
-    display: flex;
-    justify-content: center;
-    font-size: 1.9rem;
-    margin-top: 1%;
-    text-transform: capitalize;
-    text-shadow: 1px 1px 5px orange;
-}
-.line-vertical {
-    width: 2px;
-    height: 35px;
-    background: linear-gradient(to bottom, #ff7301, #ffcc00);
-    margin: 8px auto;
-    transition: all 0.3s ease-in-out;
-}
-.line-horizontal {
-    width: 71.5%;
-    height: 2px;
-    background: linear-gradient(to right, #ff7301, #ffcc00);
-    margin-left: 12.1%;
-}
-.skill-row {
-    display: flex;
-    justify-content: space-evenly;
-    text-align: center;
-}
-.skill-box {
-    border: 2px solid rgb(255, 115, 0);
-    padding: 10px 20px;
-    border-radius: 6px;
-    color: rgb(255, 255, 255);
-    background-color: black;
-    font-size: 1.1rem;
-    display: inline-block;
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-}
-.skill-box:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255, 115, 0, 0.7);
-}
-.skill-subrow {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 18px;
-    margin-top: 27px;
-    position: relative;
-}
-.skill-subrow::before {
-    content: "";
-    position: absolute;
-    top: -12px;
-    left: 8%;
-    right: 8%;
-    height: 2px;
-    background: linear-gradient(to right, #ff7301, #ffcc00);
-}
-.sub-skill {
-    border: 2px solid white;
-    padding: 20px 14px;
-    border-radius: 5px;
-    margin-top: 3%;
-    color: wheat;
-    font-size: 0.7rem;
-    background: black;
-    transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
-    cursor: pointer;
-}
-
-.sub-skill:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(255, 200, 50, 0.8);
-    color: #ff6600;
-}
-.child-skill {
-  list-style-type: none;
-    border: 2px solid rgb(255, 115, 0);
-    padding: 5px 9px;
-    border-radius: 6px;
-  color: white;
-  font-size: em;
-  margin-right: 15%;
-  margin-bottom: 5%;
-  line-height: 2;
-}
-/* project section */
-#project{
-   margin-top:0.3%;
-    background-color: black;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: row; 
-}
-    .project-heading{
-    display: flex;
-    flex-direction: column;
-    margin-top:6%;
-    align-items: center;
-    width: 7%;  
-    color: white;
-    font-size: 1.7rem;
-    font-weight: bold;
-    line-height: 2.5;
-    z-index: 2;
-    } 
-    .project-container{
-    display: flex;
-    flex-direction: column;
-    width: 80%;  
-    height: 81vh;
-    margin-top: 4%;   
-    border: 1px solid rgb(255, 123, 0); 
-}
-.project-item {
-   background-color: rgba(255, 255, 255, 0.05);
-   border: 1px solid rgb(250, 103, 5);
-   border-radius: 10px;
-   width:95%;
-   height:6em;
-   margin-top: 2.5%;
-   margin-left: 2%;
-   color: wheat;
-   transition: all 0.3s ease-in-out;
-   box-shadow: 0 0 8px rgba(231, 165, 79, 0.521);
-   cursor: pointer;
-   display: flex;
-   align-items: center;
-   gap: 15px;
-}
-.project-item img {
-   width: 100px;
-   height: 80px;
-   border-radius: 8px;
-   object-fit: cover;
-  margin-left: 1%;
-   transition: all 0.3s ease-in-out;
-}
-.project-item:hover {
-   transform: scale(1.02);
-   box-shadow: 0 0 15px rgba(255, 255, 255, 0.274);
-   background-color: rgba(255, 255, 255, 0.1);
-}
-.project-item h3 {
-   font-size: 1.4em;
-   margin-bottom: 8px;
-   color: #fff;
-}
-.project-item p {
-   font-size: 1em;
-   line-height: 1.4em;
-   color: #ddd;
-}
-/* contact us */
-#contact-page {
-    width: 100%;
-    height: 100vh;
-    background-color: #000000;
-    display: flex;
-    flex-direction: row;
-    margin-top: 0.2%;
-    position: relative;
-    z-index: 1;
-}
-.contact-heading {
-    display: flex;
-    flex-direction: column;
-    margin-top: 6.6%;
-    align-items: center;
-    width: 6%;
-    color: white;
-    font-size: 1.7rem;
-    font-weight: bold;
-    line-height: 2;
-    z-index: 2;
-}
-.contact-icons {
-    width: 9%;
-    height: 79vh;
-    background-color: rgba(224, 106, 0, 0.9);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    margin-left: %;
-   
-}
-.contact-icons a {
-    font-size: 28px;
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-    
-}
-.contact-icons a:hover {
-    color: black;
-    transform: scale(1.2);
-}
-.contact-box{
-    width: 100%;
-    height: 79vh;
-    border: 1px solid rgb(255, 81, 0); display: flex;
-    flex-direction: column;
-   }
-.contact-form {
-    width: 80%;
-    height: 80vh;
-    padding: 30px;
-    display: flex;
-    flex-direction: row;
-    margin-top: 4%;
-    margin-left: 6%;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.13);
-}
-#field{
-    width: 90%;
-    height: auto;
-    background-color: transparent;
-    color: white;    
-    position: relative;
-    font-size: 25px;
-    margin-left: 4%;
-}
-#namee, #email, #subject, #message {
-    width: 95%;
-    height: 10vh;
-    border: 2px solid #e06a00;
-    border-radius: 10px;
-    background-color: transparent;
-    color: rgb(255, 253, 253);
-    margin-top: 3%;    
-    position: relative;
-    font-size: 16px;
-    margin-left: 5%;
-}
-#namee:focus, #email:focus, #message:focus, #subject:focus{
-    border-color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.1);
-}
-#submit-btn {
-    width: 50%;
-    height: 7vh;
-    border: none;
-    margin-left: 25%;
-    margin-top: 2%;
-    border-radius: 10px;
-    background-color: #e06a00;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    align-self: center;
-}
-#submit-btn:hover {
-    background-color: #ff8c42;
-    transform: scale(1.05);
-}
-.form-heading{
-    color: wheat;
-    font-size: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 2;
-} 
-</style>
 <body>
     <!-- home section -->
-    <div id="main">
+   <div id="main" class="background-container">
         <div id="circl"></div>
         <div id="background">
              <canvas id="canvas"></canvas>
@@ -835,6 +39,7 @@ h2.skill-title {
 </div>
 
     <!-- about section -->
+     
     <div id="about">
          <div class="about-heading">
             <p>A</p>
@@ -889,13 +94,12 @@ h2.skill-title {
         <p>
             - I believe technology is more than tools — it’s a canvas to simplify life, spark creativity, and turn ideas into beautiful solutions.
         </p>
-    </div>
+           </div>
             </div>
-        </div>
+        </div>     
      </div>
        
-     
-     <!-- education -->
+ <!-- education -->
      <div id="education">
     <div class="education-heading">
         <p>E</p>
@@ -912,8 +116,8 @@ h2.skill-title {
         <div class="education-college">
             <div class="education-masters">
                 <div class="card-heading">Master's Education</div>
-                <p style="color: white;font-size: 1.2rem; margin-top: 1%; margin-left: 5%; font-style: italic; font-weight: lighter; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> - Guru GhasiDas Vishvavidayala Bilapsur  Chhattishgarh 
-                    <br> <span style="font-size: 0.9rem; margin-left: 5%; margin-top: 2%; font-family: 'Times New Roman', Times, serif;">  - Cgpa 7.53</span>
+                <p class="education-detail"> - Guru GhasiDas Vishvavidayala Bilapsur  Chhattishgarh 
+                    <br> <span>  - Cgpa 7.53</span>
                     <br>
                 </p>
                 <button class="skill-btn">Data Mining & Data Warehouse</button>
@@ -924,8 +128,8 @@ h2.skill-title {
             </div>
             <div class="education-bechlores">
                 <div class="card-heading">Bachelor's Education</div>
-               <p style="color: white;font-size: 1.2rem; margin-top: 1%; margin-left: 5%; font-style: italic; font-weight: lighter; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> - C.M.D. Post Graduation College Bilapsur  Chhattishgarh 
-                    <br> <span style="font-size: 0.9rem; margin-left: 5%; margin-top: 2%; font-family: 'Times New Roman', Times, serif;">  - 7.53 %</span>
+               <p  class="education-detail" > - C.M.D. Post Graduation College Bilapsur  Chhattishgarh 
+                    <br> <span>  - 7.53 %</span>
                     <br>
                 </p>
                     
@@ -944,31 +148,28 @@ h2.skill-title {
         <div class="education-extra">
             <div class="education-art">
                 <div class="card-heading">Art Skills</div>
-                 <p style="color: white;font-size: 1.2rem; margin-top: 1%; margin-left: 5%; font-style: italic; font-weight: lighter; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> - Indira Kala Sangeet Vishvavidayala Khairagarh Chhattishgarh.
+                 <p class="education-detail"> - Indira Kala Sangeet Vishvavidayala Khairagarh Chhattishgarh.
                 </p>
                 <br>
                 <button class="skill-btn">Painting</button>
-                <button class="skill-btn">Fine Art</button>
-                <button class="skill-btn">Pen Art</button>
-                <button class="skill-btn">Sketching</button>
+                <button class="skill-btn">Fine Art</button>               
+                 <button class="skill-btn">Sketching</button>
                 <button class="skill-btn">Drawing</button>
                 <button class="skill-btn">Crafting</button>
-                <button class="skill-btn">Imagination & creativity</button>
-                <button class="skill-btn">Attractive Designing</button>
+                <button class="skill-btn">creativity</button>
+                 <button class="skill-btn">Attractive Designing</button>
                 <button class="skill-btn">Artistic Thinking & Visualization</button>
-     
+                
             </div>
             <div class="education-graphics">
                 <div class="card-heading">Graphics Skills</div>
-                 <p style="color: white;font-size: 1.2rem; margin-top: 1%; margin-left: 5%; font-style: italic; font-weight: lighter; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> - Arena Animation's Bilapsur Chhattishgarh.
+                 <p class="education-detail"> - Arena Animation's Bilapsur Chhattishgarh.
                 </p><br>
                 <button class="skill-btn">Adobe Illustrator</button>
                 <button class="skill-btn">Adobe Photoshop</button>
                 <button class="skill-btn">Digital Art & Editing</button>
-                <button class="skill-btn">Premier Pro</button>
-                <button class="skill-btn">Audition</button>
-                <button class="skill-btn">Figma</button>
-                <button class="skill-btn">Canva</button>
+                <button class="skill-btn">Figma & Canva</button>
+                <button class="skill-btn">Premier & Audition</button>     
                 <button class="skill-btn">Graphics Designing</button>
      
            </div>
@@ -988,11 +189,41 @@ h2.skill-title {
     </div>
     <div class="skill-container">
         <h2 class="skill-title">Technical Skills</h2>
-<div class="line-vertical"> </div>
-<div class="line-horizontal"></div>
+        <h2 class="experties">Expertise Overview</h2>
+          <div class="skill-all">
+    <div class="skill-left">
+        <h2 class="expertie">Coding Skills</h2>
+        <ul>
+            <li>HTML / HTML5</li>
+            <li>CSS / CSS3</li>
+            <li>PHP</li>
+            <li>SQL / MySQL / DBMS</li>
+            <li>React</li>
+            <li>JavaScript</li>
+            <li>C / C++ / Oops Concepts</li>
+        </ul>
+    </div>
+    <div class="skill-right">
+        <h2 class="expertie">Core Skills</h2>
+        <ul>
+            <li>Figma / Canva</li>
+             <li>Illustrator / Photoshop</li>
+              <li> Fine Art / Crafting</li>
+             <li>Teamwork / creativity</li>
+             <li>Designing / Development</li>
+            <li>Communication</li>
+            <li>Problem Solving</li>
+           
+        </ul>
+    </div>
+</div>
+
+      
+        <div class="line-vertical"> </div>
+        <div class="line-horizontal"></div>
 
 <div class="skill-row">
-  <div class="skill-col" style="margin-left: 0.5%;">
+  <div class="skill-col" style="margin-left: %;">
     <div class="line-vertical" style="margin-top: 0;"></div>
     <div class="skill-box">Front End</div>
     <div class="line-vertical"></div>
@@ -1004,7 +235,7 @@ h2.skill-title {
   </div>
 
   <div class="skill-col" style="margin-left: 3.5%;">
-    <div class="line-vertical" style="margin-top: 3%;height:5.5em;"></div>
+    <div class="line-vertical" style="margin-top: 2%;height:3.7em;"></div>
     <div class="skill-box" >Backend</div>
     <div class="line-vertical"></div>
     <div class="skill-subrow">
@@ -1014,8 +245,8 @@ h2.skill-title {
     </div>
   </div>
 
-  <div class="skill-col" style="margin-left:4.5% ;">
-    <div class="line-vertical" style="margin-top: 5%;height:8.9em;"></div>
+  <div class="skill-col" style="margin-left:5% ;">
+    <div class="line-vertical" style="margin-top: 5%;height:4.3em;"></div>
     <div class="skill-box" >Database</div>
     <div class="line-vertical"></div>
     <div class="skill-subrow" style="width: 9em;">
@@ -1023,8 +254,8 @@ h2.skill-title {
     </div>
   </div>
 
-  <div class="skill-col" style="margin-left: 3%;">
-     <div class="line-vertical" style="margin-top: 0;height:13em;"></div>
+  <div class="skill-col" style="margin-left: 2%;">
+     <div class="line-vertical" style="margin-top: 0;height:6em;"></div>
     <div class="skill-box" >UI/UX</div>
     <div class="line-vertical"></div>
     <div class="skill-subrow">
@@ -1092,9 +323,9 @@ h2.skill-title {
  <div class="contact-form">
     <!-- Left Icons Section -->
     <div class="contact-icons">
-        <a href=""><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-github"></i></a>
-         <a href="#"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/shrutimishra1102/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/shrutimishra1102"><i class="fab fa-github"></i></a>
+         <a href="#contact-page"><i class="fas fa-envelope"></i></a>
     </div>
 
     <!-- Right Form Section -->
@@ -1139,95 +370,94 @@ document.getElementById("field").addEventListener("submit", function(e){
     });
 });
 </script>
-
-
 <script>
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-const parentDiv = document.querySelector('#background');
+document.addEventListener("DOMContentLoaded", function() {
+    // Cursor background
+    const cursor = document.querySelector("#circl");
+    document.addEventListener("mousemove", function(event){
+        cursor.style.left = event.pageX + "px";
+        cursor.style.top = event.pageY + "px";
+    });
 
-let particlesArray = []; // Saare dots is list (array) mein rakhe jaayenge
-const numberOfParticles = 100; // Total dots ki sankhya
-const maxDistance = 100; // Kitni doori par lines jodein
+    // Particle animation for each section with .background-container class
+    document.querySelectorAll(".background-container").forEach(section => {
+        const canvas = section.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let particlesArray = [];
+        const numberOfParticles = 100;
+        const maxDistance = 100;
 
-function setCanvasSize() {
-    canvas.width = parentDiv.clientWidth; // Canvas ki width parent div jitni set karo
-    canvas.height = parentDiv.clientHeight; // Canvas ki height parent div jitni set karo
-}
-setCanvasSize();
-window.addEventListener('resize', setCanvasSize);
+        function setCanvasSize() {
+            canvas.width = section.clientWidth;
+            canvas.height = section.clientHeight;
+        }
+        setCanvasSize();
+        window.addEventListener('resize', setCanvasSize);
 
-class Particle {
-    constructor() {
-        this.x = Math.random() * canvas.width; // Dot ki shuruaati horizontal jagah
-        this.y = Math.random() * canvas.height; // Dot ki shuruaati vertical jagah
-        this.size = Math.random() * 2 + 1; // Dot ka chota ya bada size
-        this.speedX = Math.random() * 0.5 - 0.25; // X-axis par speed (left-right)
-        this.speedY = Math.random() * 0.5 - 0.25; // Y-axis par speed (up-down)
-    }
-
-    update() {
-        this.x += this.speedX; // Har frame mein dot ko aage badhao
-        this.y += this.speedY;
-        // Agar dot screen se bahar jaata hai, toh direction ulta kar do
-        if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
-        if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
-    }
-
-    draw() {
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)'; // Dot ka color white
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); // Circle banao
-        ctx.fill(); // Circle ko color se bhar do
-    }
-}
-
-function init() {
-    particlesArray = []; // Purani list ko saaf karo
-    for (let i = 0; i < numberOfParticles; i++) {
-        particlesArray.push(new Particle()); // Naye dots banao
-    }
-}
-
-function connect() {
-    for (let a = 0; a < particlesArray.length; a++) {
-        for (let b = a; b < particlesArray.length; b++) {
-            const dx = particlesArray[a].x - particlesArray[b].x;
-            const dy = particlesArray[a].y - particlesArray[b].y;
-            const distance = Math.sqrt(dx * dx + dy * dy); // Do dots ke beech ki doori nikalne ka formula
-            
-            if (distance < maxDistance) {
-                ctx.strokeStyle = `rgba(255, 255, 255, ${1 - (distance / maxDistance)})`; // Line ka color aur opacity set karo
-                ctx.lineWidth = 1;
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
                 ctx.beginPath();
-                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                ctx.stroke(); // Line draw karo
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
             }
         }
-    }
-}
 
-function animate() {
-    requestAnimationFrame(animate); // Agli frame ko jaldi se bulao
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Purani drawing mita do
-    
-    for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update(); // Har dot ki jagah badlo
-        particlesArray[i].draw(); // Har dot ko draw karo
-    }
-    connect(); // Dots ko aapas mein jodo
-}
+        function init() {
+            particlesArray = [];
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
 
-init(); // Shuruaat mein ek baar dots banao
-animate(); // Animation shuru karo
+        function connect() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    const dx = particlesArray[a].x - particlesArray[b].x;
+                    const dy = particlesArray[a].y - particlesArray[b].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < maxDistance) {
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - (distance / maxDistance)})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
 
-// cursor baskground//
-let cursor = document.querySelector("#circl");
-main.addEventListener("mousemove", function(event){
-    gsap.to(cursor, { x: event.x, y: event.y, duration: 0.5 });
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            connect();
+        }
+
+        init();
+        animate();
+    });
 });
 </script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </body>
 </html>
